@@ -1,0 +1,32 @@
+{
+  "note1": "poolAddress instead of validatorAddress",
+  "note2": "fr root@testnet02:/opt/validators/stacks-regtest/keychain-pool.json",
+  "poolAddress": "ST3W425HZ9AZT1ZH2Y59CW5SS2SA425STWXZQTQ67",
+  "note3": "fr root@testnet02:/opt/validators/stacks-regtest/keychain-stacking-delegator.json",
+  "delegatorAddress": "ST1DGB4AZP3KTNGA768T5H63ZV84QMH3ADDBBQ7ND",
+
+  "fireblocks": {
+    "apiSecretKeyPath": "./fireblocks_secret_key",
+    "apiKeyPath": "./fireblocks_api_key",
+
+    "vaultName": "stacks-test-wallet",
+    "assetId": "STX_TEST"
+  },
+
+  "localsigner": {
+    "mnemonicPath": "./mnemonic",
+    "keyType": "ed25519",
+    "accounts": [
+      {
+        "hdPath": "m/44'/5757'/0'/0/0"
+      }
+    ]
+  },
+
+  "networkType": "stacks",
+
+  "stacks": {
+    "rpcUrl": "https://api.testnet.hiro.so/",
+    "blockExplorerUrl": "https://explorer.hiro.so/txid/0xd038f0a463c2c4f2b94d51fcee6e46dcc02f8e2b684b335c9cb115b0924753ca?chain=testnet"
+  }
+}
