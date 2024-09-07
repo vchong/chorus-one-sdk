@@ -71,9 +71,9 @@ export class StacksStaker {
    */
   async buildDelegateStx(params: {
     amountMicroStx: string
-    publicKey: string
+    key_s: string | string[]
   }): Promise<StacksTransaction> {
-    const { amountMicroStx, publicKey } = params;
+    const { amountMicroStx, key_s } = params;
     const delegateTo = this.poolAddress
     const client = this.poolClient
 
@@ -88,6 +88,16 @@ export class StacksStaker {
       delegateTo,
     });
 
-    return await makeUnsignedContractCall({ publicKey, ...callOptions })
+    if (typeof key_s === 'string') {
+      // single-sig
+      const publicKey = key_s;
+      return await makeUnsignedContractCall({ publicKey, ...callOptions })
+    } else {
+      // multi-sig
+      const publicKeys = key_s;
+      const numSignatures = key_s.length;
+      console.log("Signing for multi-sig is NOT supported yet!")
+      return await makeUnsignedContractCall({ publicKeys, numSignatures, ...callOptions })
+    }
   }
 }
