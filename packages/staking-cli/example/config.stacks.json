@@ -1,8 +1,5 @@
 {
-  "note1": "poolAddress instead of validatorAddress",
-  "note2": "fr root@testnet02:/opt/validators/stacks-regtest/keychain-pool.json",
-  "poolAddress": "ST3W425HZ9AZT1ZH2Y59CW5SS2SA425STWXZQTQ67",
-  "note3": "fr root@testnet02:/opt/validators/stacks-regtest/keychain-stacking-delegator.json",
+  "note1": "fr root@testnet02:/opt/validators/stacks-regtest/keychain-stacking-delegator.json",
   "delegatorAddress": "ST1DGB4AZP3KTNGA768T5H63ZV84QMH3ADDBBQ7ND",
 
   "fireblocks": {
@@ -27,6 +24,9 @@
 
   "stacks": {
     "rpcUrl": "https://api.testnet.hiro.so/",
-    "blockExplorerUrl": "https://explorer.hiro.so/txid/0xd038f0a463c2c4f2b94d51fcee6e46dcc02f8e2b684b335c9cb115b0924753ca?chain=testnet"
+    "blockExplorerUrl": "https://explorer.hiro.so/txid/0xd038f0a463c2c4f2b94d51fcee6e46dcc02f8e2b684b335c9cb115b0924753ca?chain=testnet",
+    "network": "testnet",
+    "note": "fr root@testnet02:/opt/validators/stacks-regtest/keychain-pool.json",
+    "poolAddress": "ST3W425HZ9AZT1ZH2Y59CW5SS2SA425STWXZQTQ67"
   }
 }

@@ -1,18 +1,23 @@
-import { Keypair, Transaction, TransactionResponse, Commitment } from '@solana/web3.js'
+import {
+  StacksTransaction,
+  TxBroadcastResult
+} from '@stacks/transactions';
 
 /** @ignore */
 export interface StacksSigningData {
-  tx: ?
+  tx: StacksTransaction
 }
 
 /** @ignore */
 export interface StacksNetworkConfig {
   // e.g. https://api.hiro?.com
   rpcUrl: string
+  network: 'testnet' | 'nakamotoTestnet' | 'mainnet' | 'devnet'
+  poolAddress: string
 }
 
 /** @ignore */
 export interface StacksTxStatus {
   status: 'success' | 'failure' | 'pending' | 'unknown'
-  receipt: ? | null
+  receipt: TxBroadcastResult | null
 }
