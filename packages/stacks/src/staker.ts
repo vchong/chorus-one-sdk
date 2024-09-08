@@ -2,8 +2,8 @@ import { StacksTransaction, makeUnsignedContractCall } from '@stacks/transaction
 import { StacksTestnet, StacksMainnet, StacksDevnet, StacksNetwork } from '@stacks/network'
 import { StackingClient } from "@stacks/stacking"
 // import { * } from './tx'
-// import type { Signer } from '@chorus-one/signer'
-import { StacksNetworkConfig } from './types'
+import type { Signer } from '@chorus-one/signer'
+import { StacksNetworkConfig, StacksTxStatus } from './types'
 
 /**
  * This class provides the functionality to stake and unstake for Stacks blockchains.
@@ -99,5 +99,71 @@ export class StacksStaker {
       console.log("Signing for multi-sig is NOT supported yet!")
       return await makeUnsignedContractCall({ publicKeys, numSignatures, ...callOptions })
     }
+  }
+
+  /**
+   * Signs a transaction using the provided signer.
+   *
+   * @param params - Parameters for the signing process
+   * @param params.signer - A signer instance.
+   * @param params.signerAddress - The address of the signer
+   * @param params.tx - The transaction to sign
+   *
+   * @returns A promise that resolves to an object containing the signed transaction.
+   */
+  async sign (params: {
+    signer: Signer
+    signerAddress: string
+    tx: StacksTransaction
+  }): Promise<{ signedTx: any }> {
+    const client = this.poolClient
+    const { signer, signerAddress, tx } = params
+
+    return { signedTx: 0 }
+  }
+
+  /**
+   * Broadcasts a signed transaction to the network.
+   *
+   * @param params - Parameters for the broadcast process
+   * @param params.signedTx - The signed transaction to broadcast
+   *
+   * @returns A promise that resolves to the final execution outcome of the broadcast transaction.
+   *
+   */
+  async broadcast (params: { signedTx: any }): Promise<{
+    txHash: string
+  }> {
+    const client = this.poolClient
+    const { signedTx } = params
+
+    return { txHash: 'dummy' };
+  }
+
+  /**
+   * Retrieves the status of a transaction using the transaction hash.
+   *
+   * @param params - Parameters for the transaction status request
+   * @param params.txHash - The transaction hash to query
+   *
+   * @returns A promise that resolves to an object containing the transaction status.
+   */
+  async getTxStatus (params: { txHash: string }): Promise<StacksTxStatus> {
+    const client = this.poolClient
+    const { txHash } = params
+
+    // const tx = await ??(txHash??)
+    const tx: any = {};
+    tx.code = 0;
+
+    if (tx === null) {
+      return { status: 'unknown', receipt: null }
+    }
+
+    if (tx.code !== 0) {
+      return { status: 'failure', receipt: tx }
+    }
+
+    return { status: 'success', receipt: tx }
   }
 }
