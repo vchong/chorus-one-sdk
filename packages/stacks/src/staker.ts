@@ -140,6 +140,7 @@ export class StacksStaker {
     const client = this.poolClient
     const { signedTx } = params
 
+    // https://docs.hiro.so/stacks/stacks.js/guides/broadcast-transactions#broadcasting-the-transaction
     return { txHash: 'dummy' };
   }
 
@@ -155,6 +156,7 @@ export class StacksStaker {
     const client = this.poolClient
     const { txHash } = params
 
+    // https://docs.hiro.so/stacks/stacks.js/guides/broadcast-transactions#handle-the-results
     // const tx = await ??(txHash??)
     const tx: any = {};
     tx.code = 0;
