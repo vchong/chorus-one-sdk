@@ -119,6 +119,9 @@ export class StacksStaker {
     const client = this.poolClient
     const { signer, signerAddress, tx } = params
 
+    const message = tx.serialize()
+    const { sig, pk } = await signer.sign(signerAddress, { message })
+
     return { signedTx: 0 }
   }
 
