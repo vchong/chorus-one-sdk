@@ -1,4 +1,9 @@
-import { StacksTransaction, makeUnsignedContractCall } from '@stacks/transactions'
+import {
+  StacksTransaction,
+  makeUnsignedContractCall,
+  cloneDeep,
+  intoInitialSighashAuth
+} from '@stacks/transactions'
 import { StacksTestnet, StacksMainnet, StacksDevnet, StacksNetwork } from '@stacks/network'
 import { StackingClient } from "@stacks/stacking"
 // import { * } from './tx'
@@ -119,10 +124,13 @@ export class StacksStaker {
     const client = this.poolClient
     const { signer, signerAddress, tx } = params
 
-    const message = tx.serialize()
-    const { sig, pk } = await signer.sign(signerAddress, { message })
+    const sigHash = tx.signBegin()
+    // const nextSighash = tx.signNextOrigin(sigHash, privateKey)
 
-    return { signedTx: 0 }
+    // const message = tx.serialize()
+    // const { sig, pk } = await signer.sign(signerAddress, { message })
+
+    // return { signedTx: 0 }
   }
 
   /**
