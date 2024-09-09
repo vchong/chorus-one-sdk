@@ -12,7 +12,6 @@
 
   "localsigner": {
     "mnemonicPath": "./mnemonic",
-    "keyType": "ed25519",
     "accounts": [
       {
         "hdPath": "m/44'/5757'/0'/0/0"
